@@ -7,8 +7,11 @@ type Square struct {
 }
 
 // End ...
-func (s Square) End() (uint, uint) {
-	return s.Side, s.Side
+func (s Square) End() Point {
+	return Point{
+		X: s.StartPoint.X + int(s.Side),
+		Y: s.StartPoint.Y + int(s.Side),
+	}
 }
 
 // Perimeter ...
