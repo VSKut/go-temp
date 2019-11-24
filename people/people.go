@@ -19,17 +19,25 @@ func (pp People) String() (r string) {
 	return
 }
 
+func (pp People) Len() int {
+	return len(pp)
+}
+func (pp People) Swap(i, j int) {
+	pp[i], pp[j] = pp[j], pp[i]
+}
+func (pp People) Less(i, j int) bool {
+	if pp[i].birthDay.After(pp[j].birthDay) {
+		return true
+	}
+
+	s := []string{pp[i].firstName + pp[i].lastName, pp[j].firstName + pp[j].lastName}
+	if pp[i].birthDay.Equal(pp[j].birthDay) && sort.StringsAreSorted(s) {
+		return true
+	}
+
+	return false
+}
+
 func (pp People) Sort() {
-	sort.Slice(pp, func(i, j int) bool {
-		if pp[i].birthDay.After(pp[j].birthDay) {
-			return true
-		}
-
-		s := []string{pp[i].firstName + pp[i].lastName, pp[j].firstName + pp[j].lastName}
-		if pp[i].birthDay.Equal(pp[j].birthDay) && sort.StringsAreSorted(s) {
-			return true
-		}
-
-		return false
-	})
+	sort.Sort(pp)
 }
