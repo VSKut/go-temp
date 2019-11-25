@@ -1,7 +1,7 @@
 package figure
 
 import (
-	"github.com/google/gxui/math"
+	"math"
 )
 
 type Circle struct {
@@ -13,5 +13,5 @@ func (s Circle) Area() float64 {
 }
 
 func (s Circle) Perimeter() float64 {
-	return float64(math.TwoPi) * s.Radius
+	return float64(math.Pi*2) * s.Radius
 }
