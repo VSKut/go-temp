@@ -32,3 +32,9 @@ func Test_MyStrToInt_OutOfRange(t *testing.T) {
 	assert.Equal(t, r, 0, "should be equal")
 	assert.Error(t, err, "should be an error")
 }
+
+func Benchmark_MyStrToInt(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_, _ = MyStrToInt("150")
+	}
+}

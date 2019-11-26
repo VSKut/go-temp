@@ -32,3 +32,9 @@ func Test_MyStrToInt2_MixedString(t *testing.T) {
 	assert.Equal(t, r, 0, "should be equal")
 	assert.Error(t, err, "should be an error")
 }
+
+func Benchmark_MyStrToInt2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_, _ = MyStrToInt2("150")
+	}
+}
