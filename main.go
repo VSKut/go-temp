@@ -11,4 +11,7 @@ func main() {
 
 	res2, err2 := strtoint.MyStrToInt2("1125235")
 	fmt.Println(res2, err2)
+
+	res3, err3 := strtoint.MyStrToInt3("123456")
+	fmt.Println(res3, err3)
 }
