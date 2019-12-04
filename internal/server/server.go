@@ -17,8 +17,7 @@ func newServer() *server {
 		router: mux.NewRouter(),
 	}
 
-	s.router.HandleFunc("/", s.anyRequestHandler())
-	s.router.HandleFunc("/{?wildcard}", s.anyRequestHandler())
+	s.router.PathPrefix("/").HandlerFunc(s.anyRequestHandler())
 
 	return s
 }
