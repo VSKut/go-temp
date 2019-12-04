@@ -18,6 +18,7 @@ func newServer() *server {
 	}
 
 	s.router.HandleFunc("/", s.anyRequestHandler())
+	s.router.HandleFunc("/{?wildcard}", s.anyRequestHandler())
 
 	return s
 }
