@@ -20,9 +20,8 @@ func Test_MyStrToInt3_EmptyString(t *testing.T) {
 }
 
 func Test_MyStrToInt3_OutOfRange(t *testing.T) {
-	r, err := MyStrToInt3("999999999999999999999999999999999999")
+	_, err := MyStrToInt3("999999999999999999999999999999999999")
 
-	assert.Equal(t, r, 0, "should be equal")
 	assert.Error(t, err, "should be an error")
 }
 
