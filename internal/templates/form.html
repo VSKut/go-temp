@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<div>
+    <p>Cookie token value: <span id="known-token">&nbsp;</span></p>
+
+    <form method="POST" action="/">
+        <p>
+            <label for="name"><b>Name</b></label>
+            <input name="name" id="name" type="text" value="" autofocus required />
+        </p>
+        <p>
+            <label for="address"><b>Address</b></label>
+            <input name="address" id="address" type="text" value="" required />
+        </p>
+        <p>
+            <input type="submit" value="submit" />
+        </p>
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    const elem = document.querySelector("#known-token");
+    let token = document.cookie.split(';').filter((item) => item.trim().startsWith('token='))[0];
+    if(token) {
+        elem.innerHTML = token.replace('token=', '');
+    }
+</script>
+<style>
+    #known-token {
+        background-color: #e6e6e6;
+    }
+</style>
+</html>
