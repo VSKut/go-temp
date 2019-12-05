@@ -9,7 +9,7 @@ func Test_MyStrToInt3(t *testing.T) {
 	r, err := MyStrToInt3("150")
 
 	assert.Equal(t, r, 150, "should be equal")
-	assert.Nil(t, err, "should be nil")
+	assert.NoError(t, err, "shouldn't be an error")
 }
 
 func Test_MyStrToInt3_EmptyString(t *testing.T) {
@@ -27,9 +27,8 @@ func Test_MyStrToInt3_OutOfRange(t *testing.T) {
 }
 
 func Test_MyStrToInt3_MixedString(t *testing.T) {
-	r, err := MyStrToInt3("Mixed123string456")
+	_, err := MyStrToInt3("Mixed123string456")
 
-	assert.Equal(t, r, 0, "should be equal")
 	assert.Error(t, err, "should be an error")
 }
 
