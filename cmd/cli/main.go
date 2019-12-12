@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"log"
 
+	db "github.com/vskut/go-temp/pkg/db/postgresql"
 	"github.com/vskut/go-temp/pkg/model"
-	"github.com/vskut/go-temp/pkg/repository/memory"
+	repo "github.com/vskut/go-temp/pkg/repository/postgresql"
 )
 
 const (
@@ -19,7 +20,13 @@ const (
 )
 
 func main() {
-	repository := memory.NewContactsRepositoryInMemory()
+
+	conn, err := db.ConnectDB("postgres://postgres:@localhost/l8t1?sslmode=disable")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	repository := repo.NewContactsRepositoryPostgreSQL(conn)
 
 	for {
 		fmt.Print(menu)
