@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 
@@ -21,7 +22,10 @@ const (
 
 func main() {
 
-	conn, err := db.ConnectDB("postgres://postgres:@localhost/l8t1?sslmode=disable")
+	var connString = flag.String("dbcs", "postgres://postgres:@localhost/postgres?sslmode=disable", "db connection string")
+	flag.Parse()
+
+	conn, err := db.ConnectDB(*connString)
 	if err != nil {
 		log.Fatal(err)
 	}
